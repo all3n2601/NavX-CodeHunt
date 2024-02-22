@@ -17,6 +17,11 @@ const passengerSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  gender: {
+    required: true,
+    type: String,
+    enum: ["Male", "Female", "Others"],
+  },
   location: {
     type: String,
   },
