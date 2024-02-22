@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../components/shared/header";
 import Footer from "../components/shared/footer";
-import SignUp from "../components/Auth/signUp";
+import CarPool from "../components/core/carPool";
 
-function SignInPage() {
+function CarPoolPage() {
   return (
     <>
       <Header />
-      <SignUp />
+      <CarPool />
       <Footer />
     </>
   );
 }
 
-export default SignInPage;
+export default CarPoolPage;
