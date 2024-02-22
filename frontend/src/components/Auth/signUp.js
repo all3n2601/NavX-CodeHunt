@@ -1,82 +1,91 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import lottie from 'lottie-web';
+import animationData from '../../assets/Animation - 1708634042750.json';
+
+function LottieAnimation() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const animation = lottie.loadAnimation({
+      container: containerRef.current,
+      animationData: animationData,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+  
+    return () => {
+      animation.destroy(); // Cleanup function to unload the animation
+    };
+  }, []);
+  
+
+  return <div ref={containerRef} />;
+}
+
 
 function SignUp() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignUp = () => {
     // Handle sign up logic here
-    console.log('Signing up with:', username, password, email);
+    console.log('Signing up with:', fullName, email, phoneNumber, password, confirmPassword);
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="max-w-md w-full p-8 bg-white shadow-lg rounded-md">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
-        <div className="mb-4">
-          <label htmlFor="username" className="block text-gray-700">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
-            placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="repeatPassword" className="block text-gray-700">
-            Repeat Password
-          </label>
-          <input
-            type="password"
-            id="repeatPassword"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
-            placeholder="Repeat your password"
-            value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
-            Email Address
-          </label>
-          <input
-            type="text"
-            id="email"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
-            placeholder="Enter your email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="flex justify-center">
+    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
+      <div className="md:w-1/3 max-w-sm">
+        <LottieAnimation />
+      </div>
+      <div className="md:w-1/3 max-w-sm">
+        <input
+          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
+          type="text"
+          placeholder="Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+        <input
+          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+          type="number"
+          placeholder="Phone Number"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <input
+          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <div className="text-center md:text-left">
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+            type="submit"
             onClick={handleSignUp}
           >
             Sign Up
           </button>
         </div>
+        <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
+          Already have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/signIn">Sign In</Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

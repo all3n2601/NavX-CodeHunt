@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/shared/header";
-import Footer from "../components/shared/footer";
+import Header from "../components/shared/Header";
+import Footer from "../components/shared/Footer";
 import SignIn from "../components/Auth/signIn";
 
 function SignInPage() {

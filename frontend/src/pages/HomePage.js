@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/shared/header';
-import Home from '../components/shared/home';
-import Footer from '../components/shared/footer';
+import Header from '../components/shared/Header';
+import Home from '../components/shared/Home';
+import Footer from '../components/shared/Footer';
 
 function Homepage() {
   return (

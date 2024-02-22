@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../components/shared/header";
-import Footer from "../components/shared/footer";
+import Header from "../components/shared/Header";
+import Footer from "../components/shared/Footer";
 import CarPool from "../components/core/carPool";
 
 function CarPoolPage() {
