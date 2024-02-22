@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../components/shared/header";
 import Footer from "../components/shared/footer";
-import SignUp from "../components/Auth/signUp";
+import BikePool from "../components/core/bikePool";
 
-function SignInPage() {
+function BikePoolPage() {
   return (
     <>
       <Header />
-      <SignUp />
+      <BikePool />
       <Footer />
     </>
   );
 }
 
-export default SignInPage;
+export default BikePoolPage;
