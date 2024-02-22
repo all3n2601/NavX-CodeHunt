@@ -26,4 +26,7 @@ const contactSchema = new mongoose.Schema({
   },
 });
 
+// DB_URI=mongodb+srv://allen:allen123@navxcluster.xmtvylz.mongodb.net/?retryWrites=true&w=majority&appName=NavXCluster
+// PORT=4000
+
 module.exports = mongoose.model("Contact", contactSchema);
