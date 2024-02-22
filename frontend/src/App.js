@@ -7,6 +7,8 @@ import SignUpPage from './pages/SignUpPage';
 import CarPoolPage from './pages/CarPoolPage';
 import BikePoolPage from './pages/BikePoolPage';
 import ContactUsPage from './pages/ContactUsPage';
+import AboutUsPage from './pages/AboutUsPage';
+import ForgetPwdPage from './pages/ForgetPwdPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route  path="/carpool" element={<CarPoolPage />} />
         <Route  path="/bikepool" element={<BikePoolPage />} />
         <Route  path="/contact-us" element={<ContactUsPage />} />
+        <Route  path="/about-us" element={<AboutUsPage />} />
+        <Route  path="/forget-pwd" element={<ForgetPwdPage />} />
       </Routes>
     </Router>
   );
