@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function signUp() {
+function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -80,4 +80,4 @@ function signUp() {
   );
 }
 
-export default signUp;
+export default SignUp;
