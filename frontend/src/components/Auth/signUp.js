@@ -82,7 +82,7 @@ function SignUp() {
           </button>
         </div>
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          Already have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/signIn">Sign In</Link>
+          Already have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/sign-in">Sign In</Link>
         </div>
       </div>
     </section>

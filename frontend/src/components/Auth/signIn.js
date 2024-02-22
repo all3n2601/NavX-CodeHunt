@@ -17,7 +17,7 @@ function LottieAnimation() {
     });
   
     return () => {
-      animation.destroy(); // Cleanup function to unload the animation
+      animation.destroy();
     };
   }, []);
 
@@ -53,7 +53,7 @@ function SignIn() {
           <button className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
         </div>
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          Don't have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" href="/signUp">Register</Link>
+          Don't have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/sign-up">Register</Link>
         </div>
       </div>
     </section>

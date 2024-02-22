@@ -6,10 +6,18 @@ import BikePool from "../components/core/bikePool";
 function BikePoolPage() {
   return (
     <>
+    <div className="h-screen flex flex-col">
+    <div className="h-10">
       <Header />
-      <BikePool />
+    </div>
+    <div className="h-80">
+      <BikePool/>
+    </div>
+    <div className="h-10">
       <Footer />
-    </>
+    </div>
+  </div>
+  </>
   );
 }
 

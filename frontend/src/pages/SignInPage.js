@@ -7,9 +7,17 @@ import SignIn from "../components/Auth/signIn";
 function SignInPage() {
   return (
     <>
-      <Header />
-      <SignIn/>
-      <Footer />
+      <div className="h-screen flex flex-col">
+      <div className="h-10">
+        <Header />
+      </div>
+      <div className="h-80">
+        <SignIn/>
+      </div>
+      <div className="h-10">
+        <Footer />
+      </div>
+    </div>
     </>
   );
 }

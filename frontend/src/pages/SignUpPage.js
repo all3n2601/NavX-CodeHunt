@@ -6,10 +6,18 @@ import SignUp from "../components/Auth/signUp";
 function SignInPage() {
   return (
     <>
+    <div className="h-screen flex flex-col">
+    <div className="h-10">
       <Header />
-      <SignUp />
+    </div>
+    <div className="h-80">
+      <SignUp/>
+    </div>
+    <div className="h-10">
       <Footer />
-    </>
+    </div>
+  </div>
+  </>
   );
 }
 

@@ -2,33 +2,60 @@ import React from "react";
 import backgroundvideo from "../../assets/Background.mp4";
 import bikelogo from "../../assets/bike-logo.png";
 import carlogo from "../../assets/car-logo-vector.png";
+import { useNavigate } from "react-router-dom";
 
-function HomePage() {
+function Home() {
+
+
+  const navigate = useNavigate();
+
+  const handleClickBike = () => {
+    navigate("/bikepool");
+  }
+
+  const handleClickCar = () => {
+    navigate("/carpool");
+  }
+
   return (
-    <div class="bg-video bg-cover bg-center">
-      <h1 className="text-3xl font-bold mb-6 text-center text-amber-500">
-        Form your Pool now
-      </h1>
-      {/* <video className="videoTag" autoPlay loop muted>
-        <source src={backgroundvideo} type="video/mp4" />
-      </video> */}
-      <div className="inline-flex flex w-screen space-x-20 items-center justify-center">
-        <button
-          type="button"
-          className="rounded border border-amber-600 py-1 px-2 h-20 w-20"
-        >
-          <img src={bikelogo} alt="bike-pool" onClick={null} />
-        </button>
+    <div className="relative flex flex-col justify-center items-center h-screen">
+      <video
+        className="object-cover w-full h-full absolute inset-0"
+        src={backgroundvideo}
+        autoPlay
+        loop
+        muted
+      />
 
-        <button
-          type="button"
-          className="rounded border border-amber-600 py-1 px-2 h-20 w-20"
-        >
-          <img src={carlogo} alt="car-pool" onClick={null} />
-        </button>
+      <h1 className="text-white text-6xl font-bold absolute top-12 text-center">
+        Form Your Pool Now
+      </h1>
+
+      <div className="absolute w-full h-full flex justify-between z-10">
+        <div className="p-20 top-45">
+        <button onClick={handleClickBike} class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Book A Bike
+            </span>
+          </button>
+          <h3 className="text-white">
+            Order a Bike Pool <br /> for 2 People Max
+          </h3>
+        </div>
+
+        <div className="p-20 top-45">
+          <button onClick={handleClickCar} class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Book A Car
+            </span>
+          </button>
+          <h3 className="text-white">
+            Order a Car Pool <br /> for 5 People Max
+          </h3>
+        </div>
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default Home;

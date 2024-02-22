@@ -6,10 +6,18 @@ import CarPool from "../components/core/carPool";
 function CarPoolPage() {
   return (
     <>
+    <div className="h-screen flex flex-col">
+    <div className="h-10">
       <Header />
-      <CarPool />
+    </div>
+    <div className="h-80">
+      <CarPool/>
+    </div>
+    <div className="h-10">
       <Footer />
-    </>
+    </div>
+  </div>
+  </>
   );
 }
 
