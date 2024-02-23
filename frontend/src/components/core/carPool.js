@@ -73,12 +73,9 @@ const CarPool = () => {
 
   const handlePath = async (event) => {
     event.preventDefault();
-    navigate("/matchusers");
-    const res = await fetch(
-      'http://localhost:4000/booking/routes',{startDestination,endDestination},
-    );
-    const data = await res.json();
-  
+    localStorage.setItem("startDestination", startDestination);
+    localStorage.setItem("endDestination", endDestination);
+    navigate("/matchusers");  
   }
 
   useEffect(() => {

@@ -2,6 +2,7 @@ const booking = require("../models/bookingDetails");
 const express = require("express");
 const router = express.Router();
 const { Error } = require("console");
+const Path = require("../models/path");
 
 
 router.post("/add-booking", async (req, res) => {
