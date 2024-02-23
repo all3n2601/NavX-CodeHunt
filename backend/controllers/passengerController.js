@@ -1,71 +1,71 @@
 const passenger = require("../models/passengerDetails");
+const express = require("express");
+const router = express.Router();
+const { Error } = require("console");
+
 //create a passenger
-const createPassenger = async (req, res) => {
-  const { email, fullname, phoneNumber, password, created_at, location } =
-    req.body;
+router.post("/add-passenger", async (req, res) => {
+  const {
+    email,
+    fullname,
+    phoneNumber,
+    gender,
+    password,
+    created_at,
+    location,
+  } = req.body;
   try {
     const passengerDetail = new passenger({
       email,
       fullname,
       phoneNumber,
+      gender,
       password,
       created_at,
       location,
     });
     const passengerdetail = await passengerDetail.save();
-    res.status(201).json(passengerdetail);
+    res.json(passengerdetail);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while creating the Passenger" });
+    res.status(500).json({ error: Error.message });
   }
-};
+});
 //get all passengers
-const getAllPassengers = async (req, res) => {
+router.get("/get-passenger-all", async (req, res) => {
   try {
     const passengerDetail = await passenger.find({});
     res.json(passengerDetail);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching the Passenger" });
+    res.status(500).json({ error: Error.message });
   }
-};
+});
 
-//get specific issue
-const getContactIssuebyId = async (req, res) => {
-  const issueId = req.params.id;
+//get specific passenger
+router.get("/get-passenger", async (req, res) => {
+  const passengerId = req.params.id;
   try {
-    const contactissue = await issue.findById({ issueId });
-    if (!contactissue) {
-      return res.status(404).json({ error: "issue not found" });
+    const passengerDetail = await issue.findById({ passengerId });
+    if (!passengerDetail) {
+      return res.status(404).json({ error: Error.message });
     }
-    res.json(contactissue);
+    res.json(passengerDetail);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching the issue" });
+    res.status(500).json({ error: Error.message });
   }
-};
+});
 
-//delete issue
-const deleteissue = async (req, res) => {
-  const issueId = req.params.id;
+//delete passenger
+router.delete("/delete-passenger", async (req, res) => {
+  const passengerId = req.params.id;
   try {
-    const deletedissue = await issue.findByIdAndRemove({ issueId });
-    if (!deletedissue) {
-      return res.status(404).json({ error: "issue not found" });
+    const deletedpassenger = await issue.findByIdAndRemove({ passengerId });
+    if (!deletedpassenger) {
+      return res.status(404).json({ error: Error.message });
     }
-    res.json(deletedissue);
+    res.json(deletedpassenger);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while deleting the issue" });
+    res.status(500).json({ error: Error.message });
   }
-};
-export default contactControllers = {
-  createContactIssue,
-  getAllContactIssue,
-  getContactIssuebyId,
-  deleteissue,
-};
+});
+
+module.exports = router;
