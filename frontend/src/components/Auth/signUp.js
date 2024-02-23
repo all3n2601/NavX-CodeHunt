@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import animationData from '../../assets/Animation - 1708634042750.json';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LottieAnimation() {
   const containerRef = useRef(null);
@@ -32,9 +34,18 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [gender, setGender] = useState('');
+  const navigate = useNavigate();
 
-  const handleSignUp = () => {
-    console.log('Signing up with:', fullName, email, phoneNumber, password, confirmPassword, gender);
+  const handleSignUp = async(e) => {
+    e.preventDefault();
+    await axios.post('http://localhost:4000/auth/signup', {fullName, phoneNumber , password , gender })
+    .then((res) => {
+      if(res.data.message  === "Success"){
+        navigate('/user-dashboard')
+      }
+    }).catch((err) => {
+      console.log(err);
+    });  
   };
 
   return (
