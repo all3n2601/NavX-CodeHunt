@@ -65,7 +65,7 @@ const generateToken = (userId) => {
     const token = generateToken(user.id);
 
     res.cookie('token', token, { httpOnly: true });
-    res.json({ token });
+    res.json({ token, message: 'Success'});
     
   } catch (error) {
     console.error(error.message);

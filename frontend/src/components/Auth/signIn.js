@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import animationData from '../../assets/Animation - 1708634042750.json';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LottieAnimation() {
   const containerRef = useRef(null);
+
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -26,12 +29,22 @@ function LottieAnimation() {
 
 
 function SignIn() {
-  const [username, setUsername] = useState('');
+  const [phoneno, setPhoneNo] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSignIn = () => {
-    // Handle sign in logic here
-    console.log('Signing in with:', username, password);
+  const handleSignIn = async(e) => {
+  
+    e.preventDefault();
+    await axios.post('http://localhost:4000/auth/signin', {phoneno, password})
+    .then((res) => {
+      if(res.data.message  === "Success"){
+        navigate('/user-dashboard')
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
@@ -40,8 +53,8 @@ function SignIn() {
         <LottieAnimation />
       </div>
       <div className="md:w-1/3 max-w-sm">
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Phone Number" />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" onChange={(e) =>setPhoneNo(e.target.value )} type="text" placeholder="Phone Number" />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" onChange={(e) =>setPassword(e.target.value )} type="password" placeholder="Password" />
         <div className="mt-4 flex justify-between font-semibold text-sm">
           <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
             <input className="mr-1 appearance-none border border-solid border-gray-300 rounded-sm w-5 h-5 checked:bg-amber-500 checked:border-transparent" type="checkbox" />
@@ -50,7 +63,7 @@ function SignIn() {
           <Link className="text-amber-500 hover:text-amber-600 hover:underline hover:underline-offset-4" to="/forget-pwd">Forgot Password?</Link>
         </div>
         <div className="text-center md:text-left">
-          <button className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
+          <button onClick={handleSignIn} className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
         </div>
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
           Don't have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/sign-up">Register</Link>

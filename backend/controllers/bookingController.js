@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { Error } = require("console");
 
-//create a passenger
+
 router.post("/add-booking", async (req, res) => {
   const {
     passengerId,
