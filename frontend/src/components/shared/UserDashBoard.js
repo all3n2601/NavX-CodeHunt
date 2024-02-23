@@ -19,9 +19,10 @@ function UserDashboard() {
       // Fetch user data and update state
       // For now, let's just set some sample data
       setUserData({
-        name: 'John Doe',
+        name: 'Sangili Karappu',
         phoneNo: '1234567890',
         gender: 'Male',
+        otp: 7470
       });
     }, 1000); // 1 second delay
   }, []);
@@ -41,9 +42,13 @@ function UserDashboard() {
           <p className="font-semibold text-lg">Phone Number:</p>
           <p className="text-lg">{userData.phoneNo}</p>
         </div>
-        <div>
+        <div className="mb-2">
           <p className="font-semibold text-lg">Gender:</p>
           <p className="text-lg">{userData.gender}</p>
+        </div>
+        <div>
+          <p className="font-semibold text-lg">OTP:</p>
+          <p className="text-lg">{userData.otp}</p>
         </div>
         <div className="mt-4">
           <Link to="/edit-profile" className="text-amber-500 hover:underline text-lg">Edit Profile</Link>
