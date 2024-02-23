@@ -1,12 +1,12 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
 require("dotenv/config");
 
 const jwt_secret = process.env.JWT_SECRET;
 
-export const authenticate = (req, res, next) => {
+const authenticate = (req, res, next) => {
 
-  const token = req.cookies.token || req.header('Authorization');
+  const token =  req.header('Authorization') || req.cookies.token;
 
   if (!token) {
     return res.status(401).json({ msg: 'Authorization denied. No token provided.' });
@@ -26,3 +26,5 @@ export const authenticate = (req, res, next) => {
     res.status(401).json({ msg: 'Authorization denied. Invalid token.' });
   }
 };
+
+module.exports = authenticate;

@@ -4,14 +4,14 @@ const connectToDatabase = require('./db/mongoose');
 const corsMiddleware = require("./middlewares/cors");
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const bodyParser = require("body-parser");
-const { passengerrouter } = require('./controller/authController');
+const authController = require('./controllers/authController');
 const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(corsMiddleware);
 
 
-.use("/auth",passengerrouter)
+app.use("/auth",authController);
 
 app.use(errorHandlerMiddleware);
 

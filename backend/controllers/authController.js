@@ -1,11 +1,12 @@
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import dotenv from "dotenv";
-import express from "express";
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require("dotenv/config");
 
 const passenger = require("../models/passengerDetails");
-export const passengerrouter = express.Router();
-dotenv.config();
+const authenticate = require('../middlewares/auth');
+const router = express.Router();
+
 
 const jwt_secret = process.env.JWT_SECRET;
 
@@ -17,19 +18,19 @@ const generateToken = (userId) => {
 };
 
 // Signup
-export async function signup(req, res) {
+ async function signup(req, res) {
   try {
-    const { fullname, phone, password, cpassword } = req.body;
+    const { fullname, phone, gender, password, cpassword } = req.body;
 
-    let phonecheck = await User.findOne({ phone });
+    let phonecheck = await passenger.findOne({ phoneNumber:phone });
 
     if (phonecheck) {
-      return res.status(400).json({ msg: 'email ID already exists' });
+      return res.status(400).json({ msg: 'Phone already exists' });
     }
 
 
 
-    const user = new passenger( { fullname, phone, password });
+    const user = new passenger( { fullName:fullname, phoneNumber:phone, gender, password });
 
     await user.save();
 
@@ -45,25 +46,22 @@ export async function signup(req, res) {
 }
 
 // Signin
-export async function signin(req, res) {
+ async function signin(req, res) {
   try {
     const { phone, password } = req.body;
 
-    // Check if user exists
-    const user = await passenger.findOne({ phone });
+    const user = await passenger.findOne({ phoneNumber:phone });
 
     if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    // Check password
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    // Create and return JWT
     const token = generateToken(user.id);
 
     res.cookie('token', token, { httpOnly: true });
@@ -76,7 +74,7 @@ export async function signin(req, res) {
 }
 
 
-export async function profile(req, res){
+ async function profile(req, res){
   try {
     const user = await passenger.findById(req.user.id).select("-password");
     res.json(user);
@@ -87,6 +85,8 @@ export async function profile(req, res){
 }
 
 
-passengerrouter.post("/signup",signup);
-passengerrouter.post("/signin",signin);
-passengerrouter.get.("/profile",profile)
+router.post("/signup",signup);
+router.post("/signin",signin);
+router.get("/profile",authenticate,profile);
+
+module.exports = router;
