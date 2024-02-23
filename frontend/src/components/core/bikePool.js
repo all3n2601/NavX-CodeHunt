@@ -39,6 +39,10 @@ const BikePool = () => {
     new maptilersdk.Marker({color: "#FF0000"})
       .setLngLat([80.49,16.49731])
       .addTo(map.current);
+
+      new maptilersdk.Marker({color: "#FF0000"})
+      .setLngLat([80.6480,16.5062])
+      .addTo(map.current);
   }, [vitap.lng, vitap.lat, zoom]);
 
 
