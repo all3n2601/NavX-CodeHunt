@@ -51,7 +51,7 @@ const MatchUsers = () => {
           <li className="py-4">
             <div className="grid grid-cols-5 gap-x-4">
               <p className="col-span-1">Name</p>
-              <p className="col-span-1">Phone Number</p>
+              <p className="col-span-1">Gender</p>
               <p className="col-span-1">Source</p>
               <p className="col-span-1">Destination</p>
               <p className="col-span-1">Acceptance</p>
