@@ -153,7 +153,7 @@ function Contact() {
 
               <button
                 type="submit"
-                class="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-6 hover:bg-indigo-500 transition ease-in-out duration-300"
+                class="md:w-32 bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg mt-6 hover:bg-indigo-500 transition ease-in-out duration-300"
               >
                 Submit
               </button>
