@@ -71,6 +71,16 @@ const CarPool = () => {
   const [zoom] = useState(14);
   maptilersdk.config.apiKey = "CDT7KjhLjQLtEP22nUvh";
 
+  const handlePath = async (event) => {
+    event.preventDefault();
+    navigate("/matchusers");
+    const res = await fetch(
+      'http://localhost:4000/booking/routes',{startDestination,endDestination},
+    );
+    const data = await res.json();
+  
+  }
+
   useEffect(() => {
     if (map.current) return;
 
@@ -131,7 +141,7 @@ const CarPool = () => {
           </div>
 
           <button
-            onClick={handleClick}
+            onClick={handlePath}
             type="button"
             class="text-white m-5 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
           >

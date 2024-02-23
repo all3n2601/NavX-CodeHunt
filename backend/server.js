@@ -5,6 +5,10 @@ const corsMiddleware = require("./middlewares/cors");
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const bodyParser = require("body-parser");
 const authController = require('./controllers/authController');
+const bookingController = require('./controllers/bookingController');
+const contactController = require('./controllers/contactController');
+const passengerController = require('./controllers/passengerController');
+
 const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,6 +16,9 @@ app.use(corsMiddleware);
 
 
 app.use("/auth",authController);
+app.use("/booking",bookingController);
+app.use("/contact",contactController);
+app.use("/passenger",passengerController);
 
 app.use(errorHandlerMiddleware);
 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
   passengerID: {
-    type: mongoose.Schema.Types.passengerID,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "passengerSchema",
     unique: true,
   },
@@ -16,7 +16,7 @@ const bookingSchema = new mongoose.Schema({
   },
   co_passengersID: [
     {
-      type: mongoose.Schema.Types.passengerID,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "passengerSchema",
     },
   ],
@@ -26,4 +26,4 @@ const bookingSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Contact", contactSchema);
+module.exports = mongoose.model("Booking", bookingSchema, "bookings");

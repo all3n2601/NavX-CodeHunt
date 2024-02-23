@@ -27,4 +27,27 @@ router.post("/add-booking", async (req, res) => {
   }
 });
 
+router.get('/routes', async (req, res) => {
+  try {
+    const { start, destination } = req.body;
+
+    const routes = await Path.find({
+      $or: [
+        { start },
+        { destination },
+        { stops: { $in: [start, destination] } }
+      ]
+    });
+
+    if (!routes) {
+      return res.status(404).json({ message: 'No routes found' });
+    }
+    res.json({ routes });
+  } catch (err) {
+    console.error('Error fetching routes:', err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
 module.exports = router;
