@@ -40,20 +40,13 @@ function SignIn() {
         <LottieAnimation />
       </div>
       <div className="md:w-1/3 max-w-sm">
+        <h1 className="p-2">Enter your Phone Number to Reset to your Password</h1>
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="number" placeholder="Phone Number" />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
-        <div className="mt-4 flex justify-between font-semibold text-sm">
-          <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
-            <input className="mr-1 appearance-none border border-solid border-gray-300 rounded-sm w-5 h-5 checked:bg-amber-500 checked:border-transparent" type="checkbox" />
-            <span>Remember Me</span>
-          </label>
-          <Link className="text-amber-500 hover:text-amber-600 hover:underline hover:underline-offset-4" to="/forget-pwd">Forgot Password?</Link>
-        </div>
         <div className="text-center md:text-left">
-          <button className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
+          <button className="mt-4 bg-amber-500 hover:bg-amber-600 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Reset</button>
         </div>
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          Don't have an account? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/sign-up">Register</Link>
+          Know your password? <Link className="text-amber-500 hover:underline hover:underline-offset-4" to="/sign-in">Signin</Link>
         </div>
       </div>
     </section>
