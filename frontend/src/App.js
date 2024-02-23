@@ -9,6 +9,7 @@ import BikePoolPage from './pages/BikePoolPage';
 import ContactUsPage from './pages/ContactUsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ForgetPwdPage from './pages/ForgetPwdPage';
+import UserDashBoardPage from './pages/UserDashBoardPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route  path="/contact-us" element={<ContactUsPage />} />
         <Route  path="/about-us" element={<AboutUsPage />} />
         <Route  path="/forget-pwd" element={<ForgetPwdPage />} />
+        <Route  path="/user-dashboard" element={<UserDashBoardPage />} />
       </Routes>
     </Router>
   );
