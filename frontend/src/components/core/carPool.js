@@ -4,9 +4,14 @@ import { useRef, useEffect, useState } from "react";
 import * as maptilersdk from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import "./map.css";
+import { useNavigate } from "react-router-dom";
 
 const CarPool = () => {
 
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/matchusers");
+      }
     const [startDestination, setStartDestination] = useState("VITAP");
     const [endDestination, setEndDestination] = useState("Vijaywada");
     const places = [
@@ -53,7 +58,7 @@ const CarPool = () => {
               id="startDestination"
               value={startDestination}
               onChange={(e) => setStartDestination(e.target.value)}
-              className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-20 py-2 text-purple-700 bg-white border rounded-lg focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             >
               {places.map((place, index) => (
                 <option key={index} value={place}>{place}</option>
@@ -68,7 +73,7 @@ const CarPool = () => {
              value={endDestination}
              onChange={(e) => setEndDestination(e.target.value)}
               id="startDestination"
-              className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-20 py-2 text-purple-700 bg-white border rounded-lg focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             >
               {places.map((place, index) => (
                 <option key={index} value={place}>{place}</option>
@@ -77,7 +82,7 @@ const CarPool = () => {
           </div>
 
           <button
-          onClick={null}
+          onClick={handleClick}
             type="button"
             class="text-white m-5 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
           >
